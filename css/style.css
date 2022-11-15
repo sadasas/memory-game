@@ -70,7 +70,7 @@ h1 {
 
 
 .card {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 60px;
