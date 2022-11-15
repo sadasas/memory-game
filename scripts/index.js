@@ -64,7 +64,7 @@ function displayClickedCard() {
         clickedCards.push(this);
         
         // Reveal the card and make sure it can't be clicked again until after matching
-        this.classList.add('show-card');
+        this.classList.add('-cashowrd');
         this.classList.add('disable-card-click');
     }
 
