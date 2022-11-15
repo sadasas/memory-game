@@ -2,9 +2,9 @@
 
 require 'Config.php';
 	
-	let data = JSON.parse($_POST);
-	$txtName =data.Name;
-	$txtScore = data.Score; 
+	//let data = JSON.parse($_POST);
+	//$txtName =data.Name;
+	//$txtScore = data.Score; 
  
 	//insert
 	$sql = "INSERT INTO `topscore` ( `id`,`name`,`score` ) VALUES ('0','aaaa','ggggg')";
