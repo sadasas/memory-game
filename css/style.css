@@ -92,6 +92,10 @@ h1 {
     border: 1px solid #00CED1;
 }
 
+.show-card img {
+    display: flex;
+}
+
 
 .disable-card-click {
     pointer-events: none;
