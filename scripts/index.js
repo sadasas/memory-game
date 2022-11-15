@@ -143,8 +143,8 @@ function endGame() {
 
 function restartGame() {
 
-    // Allow the timer to be restarted once it's been reset.
-    startTimer = true;
+
+startTimer = true;
     
     // Clear all metrics that were being tracked
     clearInterval(time);
@@ -195,6 +195,14 @@ function restartGame() {
     modalMessage.innerHTML = '';
     modalContainer.classList.add('hide');
     
+		data = new FormData();
+	data.set('Name','Wahyu');
+	data.set('Score','2222');
+
+	let request = new XMLHttpRequest();
+	request.open("POST", 'Database/InputSkor.php', true);
+	request.send(data);
+	console.log("tes");
 }
 
 function closeModal() {
