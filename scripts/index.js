@@ -32,6 +32,26 @@ let minutes = 0;
 let seconds = 0;
 let time;
 
+//get username 
+function getUser(){
+
+	document.addEventListener('DOMContentLoaded', (event) => {
+		const parameters = new URLSearchParams(window.location.search);
+		let user = parameters.get('username');
+		console.log(user);
+		  document.getElementById("txtUsername").innerHTML = user;
+				event.preventDefault();
+		if(user !=null)
+		{
+
+ const list = document.getElementById("myDIV").classList;
+        list.add('hide-btn');
+		}
+
+
+	});
+}
+
 function gameTimer() {
     seconds++;
 
@@ -143,8 +163,18 @@ function endGame() {
 
 function restartGame() {
 
+const data = { username: 'example',
+									 move: moves,
+									 times: time};
 
-startTimer = true;
+		fetch('./API/InputSkor.php', {
+			method: 'POST', // or 'PUT'
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		});
+		startTimer = true;
     
     // Clear all metrics that were being tracked
     clearInterval(time);
@@ -195,15 +225,9 @@ startTimer = true;
     modalMessage.innerHTML = '';
     modalContainer.classList.add('hide');
     
-		data = new FormData();
-	data.set('Name','Wahyu');
-	data.set('Score','2222');
-
-	let request = new XMLHttpRequest();
-	request.open("POST", 'Database/InputSkor.php', true);
-	request.send(data);
-	console.log("tes");
+		
 }
+
 
 function closeModal() {
     modalContainer.classList.add('hide');
@@ -234,5 +258,6 @@ function renderShuffledCards() {
     });
 }
 
+getUser();
 shuffleArray(cards);
 renderShuffledCards();

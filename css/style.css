@@ -1,13 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 body {
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw; */
+    /* height: 100vh; */
     overflow-x: hidden;
     padding: 0;
-    margin: 0;
     font-family: 'Montserrat', sans-serif;
 		background-color: #f9f9f9;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+	border: 1px solid #999;
+}
+
+table th{
+	border: 1px solid #999;
 }
 
 
@@ -42,8 +51,9 @@ h1 {
 .timer-container,
 .move-counter-container,
 .restart-button-container {
-    margin: 0px auto;
     width: 125px;
+		margin : 0 auto;
+		margin-top :20px !important;
     text-align: center;
 }
 
@@ -52,8 +62,8 @@ h1 {
     width: 100px;
     height: 35px;
     font-size: 20px;
-    font-family: 'Princess Sofia', cursive;
-    text-transform: lowercase;
+    font-family: 'Montserrat', sans-serif;
+		text-transform: lowercase;
 }
 
 
@@ -68,6 +78,9 @@ h1 {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
+.hide-btn{
+	display:none;
+}
 
 .card {
     align-items: center;

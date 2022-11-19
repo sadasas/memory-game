@@ -4,6 +4,10 @@ USE `Memory-Game`;
 CREATE TABLE `TopScore` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar (100),
-	`score` varchar (100),
+	`move` int (100),
+	`time` int (255),
  PRIMARY KEY (`id`)
 );
+
+
+

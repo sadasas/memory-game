@@ -1,5 +1,13 @@
 {
   "dependencies": {
     "jquery": "^3.6.1"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.193.0"
+  },
+	 "scripts": {
+    "flow": "flow",
+		"build": "babel src/ -d lib/",
+    "prepublish": "yarn run build"
   }
 }
