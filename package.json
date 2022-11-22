@@ -3,11 +3,13 @@
     "jquery": "^3.6.1"
   },
   "devDependencies": {
+    "eslint": "^8.28.0",
+    "eslint-config-google": "^0.14.0",
     "flow-bin": "^0.193.0"
   },
-	 "scripts": {
+  "scripts": {
     "flow": "flow",
-		"build": "babel src/ -d lib/",
+    "build": "babel src/ -d lib/",
     "prepublish": "yarn run build"
   }
 }

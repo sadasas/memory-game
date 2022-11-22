@@ -1,4 +1,3 @@
-function Login(){
-	window.location.replace('./login.php');
+function Login() {
+  window.location.replace("./login.php");
 }
-

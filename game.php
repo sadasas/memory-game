@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +72,8 @@
 					</div>
 				</th>
 				<th rowspan="4">
-					<h2>TopScore</h2>
+					<h2 >TopScore</h2>
+	<p id="TopScore"></p>
 				</th>
 			</tr>
 			<tr>
