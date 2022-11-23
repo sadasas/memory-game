@@ -38,8 +38,6 @@ function getUser() {
 		const tempUser = parameters.get("username");
 
 		if (tempUser != null) {
-			const list = document.getElementById("myDIV").classList;
-			list.add("hide-btn");
 			user = tempUser;
 		}
 		document.getElementById("txtUsername").innerHTML = user;
@@ -148,19 +146,13 @@ function updateStarRating() {
 }
 
 function endGame() {
-	modalStars.innerHTML = gameStars.innerHTML;
-	modalMessage.innerHTML = `It took you ${moves} moves and ${hours > 0 ? `${hours} hours,` : ""
-		} ${minutes > 0 ? `${minutes} minutes and ` : ""
-		} ${`${seconds} seconds`} to win the game.`;
-	modalContainer.classList.remove("hide");
-
-	// use jquery to insert
-}
-
-function restartGame() {
 	const hour2Second = hours * 3600;
 	const minute2Second = minutes * 60;
-	const data = { username: user, move: moves, times: hour2Second + minute2Second + seconds };
+	const data = {
+		name: user,
+		move: moves,
+		time: hour2Second + minute2Second + seconds,
+	};
 	fetch("./API/InputSkor.php", {
 		method: "POST", // or 'PUT'
 		headers: {
@@ -172,8 +164,18 @@ function restartGame() {
 		.then((msg) => {
 			console.log(msg);
 		});
-
 	getTopScore("./API/GetTopScore.php");
+
+	modalStars.innerHTML = gameStars.innerHTML;
+	modalMessage.innerHTML = `It took you ${moves} moves and ${hours > 0 ? `${hours} hours,` : ""
+		} ${minutes > 0 ? `${minutes} minutes and ` : ""
+		} ${`${seconds} seconds`} to win the game.`;
+	modalContainer.classList.remove("hide");
+
+	// use jquery to insert
+}
+
+function restartGame() {
 	startTimer = true;
 
 	// Clear all metrics that were being tracked

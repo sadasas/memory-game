@@ -4,27 +4,44 @@
 	
 	$json =  file_get_contents('php://input');
 	$data = json_decode($json,true);
-	$txtName =$data["username"];
+	$txtName =$data["name"];
 	$txtMove =$data["move"];
-	$txtTime =$data["times"];
+	$txtTime =$data["time"];
 
-	$query = "SELECT * FROM topscore";
+	$query = "SELECT * FROM `topscore`";
 	$result = mysqli_query($mysqli,$query);
 
 	if(mysqli_num_rows($result)>10)
 	{
 		$temData= $data;
-		while($row = mysqli_fetch_row($result))
+		echo $temData["name"];
+		while($row = mysqli_fetch_assoc($result))
 		{
 				if($row["time"] > $temData["time"])
 				{
 					$temData = $row;
 				}
 		}
+		if($tempData["name"] == $txtName)
+		{
+			exit();
+		}
+		else
+		{
+			$temName = $temData["name"];
+			$qd = "DELETE FROM `topscore` WHERE name = '$temName'";
+			$rs = mysqli_query($mysqli,$qd);
+
+			//insert 
+			$sql = "INSERT INTO `topscore` ( `id`,`name`,`move`,`time` ) VALUES ('0','$txtName','$txtMove','$txtTime')";
+			$rs = mysqli_query($mysqli,$sql);
+
+			echo "TopScore updated";
+
+		}
 	}
 	else
 	{
-		//insert
 		//select 
 		echo $txtName;
 		$sn = "SELECT * FROM `topscore` WHERE name = '$txtName'";
