@@ -15,6 +15,7 @@ if ($check == '0') {
 	echo "<script>window.location.replace('../login.php?message=$error');</script>";
 	exit();
 } else {
-	header("location: ../game.html");
+	echo "<script>window.location.replace('../game.html?username=$username');</script>";
+	echo "user logged";
 	exit();
 }

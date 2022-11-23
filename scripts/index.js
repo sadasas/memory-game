@@ -1,5 +1,5 @@
 const cardsNodelist = document.getElementsByClassName("card");
-
+let user = "guest";
 const board = document.querySelector(".board");
 const moveCounter = document.querySelector(".move-counter");
 const timer = document.querySelector(".timer");
@@ -35,14 +35,15 @@ let time;
 function getUser() {
 	document.addEventListener("DOMContentLoaded", (event) => {
 		const parameters = new URLSearchParams(window.location.search);
-		const user = parameters.get("username");
-		console.log(user);
-		document.getElementById("txtUsername").innerHTML = user;
-		event.preventDefault();
-		if (user != null) {
+		const tempUser = parameters.get("username");
+
+		if (tempUser != null) {
 			const list = document.getElementById("myDIV").classList;
 			list.add("hide-btn");
+			user = tempUser;
 		}
+		document.getElementById("txtUsername").innerHTML = user;
+		event.preventDefault();
 	});
 }
 
@@ -157,15 +158,22 @@ function endGame() {
 }
 
 function restartGame() {
-	const data = { username: "example", move: moves, times: time };
-
+	const hour2Second = hours * 3600;
+	const minute2Second = minutes * 60;
+	const data = { username: user, move: moves, times: hour2Second + minute2Second + seconds };
 	fetch("./API/InputSkor.php", {
 		method: "POST", // or 'PUT'
 		headers: {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(data),
-	});
+	})
+		.then((response) => response.text())
+		.then((msg) => {
+			console.log(msg);
+		});
+
+	getTopScore("./API/GetTopScore.php");
 	startTimer = true;
 
 	// Clear all metrics that were being tracked
@@ -177,7 +185,6 @@ function restartGame() {
 	hours = 0;
 	minutes = 0;
 	seconds = 0;
-
 	// Reset the Star rating visual to 3 stars since it's a new game
 	stars.forEach((star) => {
 		star.classList.remove("hide");
@@ -250,6 +257,6 @@ function renderShuffledCards() {
 }
 
 getUser();
-getTopScore('./API/GetTopScore.php');
+getTopScore("./API/GetTopScore.php");
 shuffleArray(cards);
 renderShuffledCards();

@@ -16,8 +16,9 @@ $rs = mysqli_query($mysqli, $sql);
 
 if ($rs) {
 
-	echo "<script>window.location.replace('../game.php?username=$username');</script>";
+	echo "<script>window.location.replace('../game.html?username=$username');</script>";
 	echo "user saved";
 } else {
 	echo "failed";
 }
+?>
